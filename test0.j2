@@ -1,0 +1,7 @@
+devices:
+{% for device in devices %}
+  - name: {{ device.name }}
+    ip: {{ device.ip }}
+    role: {{ device.role }}
+    location: {{ device.location }}
+{% endfor %}
