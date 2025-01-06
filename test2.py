@@ -54,12 +54,17 @@
 import subprocess
 import sys
 
-# Ensure jinja2 is installed
-try:
-    import jinja2
-except ImportError:
-    print("jinja2 not found. Installing...")
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "jinja2"])
+# Function to install a package if it's not found
+def install_package(package):
+    try:
+        __import__(package)
+    except ImportError:
+        print(f"{package} not found. Installing...")
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+# Install jinja2 and pyyaml (os is built-in)
+install_package('jinja2')
+install_package('pyyaml')
 
 # Now proceed with the rest of the script
 from jinja2 import Environment, FileSystemLoader
