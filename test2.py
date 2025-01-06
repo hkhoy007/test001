@@ -51,6 +51,17 @@
 # print('\n')
 """
 
+import subprocess
+import sys
+
+# Ensure jinja2 is installed
+try:
+    import jinja2
+except ImportError:
+    print("jinja2 not found. Installing...")
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "jinja2"])
+
+# Now proceed with the rest of the script
 from jinja2 import Environment, FileSystemLoader
 import yaml
 import os
